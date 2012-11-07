@@ -1,0 +1,28 @@
+.sve_video_container {
+	position: relative;
+}
+
+.sve_mute_button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 3;
+	opacity: 0.5;
+	display: block;
+	cursor: pointer;
+}
+
+.sve_cover_image {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.sve_play_button {
+	position: absolute;
+	z-index: 3;
+}
+
+.sve_popup_link {
+	display: inline-block;
+}
