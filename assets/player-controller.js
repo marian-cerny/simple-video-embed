@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 //ACTIVATE FANCYBOX AND CHANGE VIDEO CONTAINER ELEMENTS
 $('.sve_popup_link').fancybox({
-	showCloseButton: false,
+	// 'closeBtn': false,
 	beforeLoad: function() {
 		pause( $('#sve_video') );
 	}
@@ -13,6 +13,10 @@ $('.sve_popup_link').fancybox({
 	swap_video_content( $(this) );
 	// init();
 });
+
+$( '.fancybox-close' ).mouseover( function(){
+	return false;
+} );
 
 var a_video_status = [];
 var a_is_flash;

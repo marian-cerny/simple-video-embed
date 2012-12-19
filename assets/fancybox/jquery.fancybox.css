@@ -97,7 +97,7 @@
 	background: url('fancybox_loading.gif') center center no-repeat;
 }
 
-.fancybox-close {
+.fancybox-close, .fancybox-close:hover {
 	position: absolute;
 	top: -18px;
 	right: -18px;
