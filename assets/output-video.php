@@ -2,7 +2,7 @@
 	
 	$s_flash_player_url = ASSETS_URL . 'flvplayer.swf';
 	$s_image_dir_url = ASSETS_URL . 'images';
-	$s_video_url = $this->video_dir_url . $filename;
+	$s_video_url = $this->video_dir_url . $filename ;
 	
 	$a_existing_video_extensions = $this->get_existing_extensions( 'video', $filename );
 	$a_existing_image_extensions = $this->get_existing_extensions( 'image', $filename );
@@ -13,15 +13,41 @@
 /* INSERT POPUP LINK WITH IMAGE */
 if ( $is_popup )
 {
+	//VIDEO SOURCE TAGS
+	$s_video_source_tags = "";
+	// echo "<pre>"; print_r( $a_existing_image_extensions ); echo "</pre>";	
+	
+	foreach( $a_existing_video_extensions as $s_ext )
+	{
+		$s_video_url = $this->video_dir_url . $filename . '.' . $s_ext;
+		$s_video_source_tags .= "<div class='source'>";
+		$s_video_source_tags .= "<div class='src'>{$s_video_url}</div>";
+		$s_video_source_tags .= "<div class='type'>video/{$s_ext}</div>";
+		$s_video_source_tags .= "</div>";
+	}	
+	
+	//FLASH SOURCE TAG
+	$s_flash_source_tag = '';
+	
+	if ( !empty( $a_existing_flash_extensions ) )
+		$s_flash_source_tag .= 
+			"<div class='flash'>" . 
+			$this->video_dir_url . $filename . '.' . $a_existing_flash_extensions[0] . 
+			"</div>";
+
 	$s_output .= "
 		<a 
 			class='sve_popup_link'
 			href='#sve_video_container_{$filename}'
 		>
 			<img 
-				src='{$s_video_url}.{$a_existing_image_extensions[0]}' 
+				src='{$this->video_dir_url}{$filename}.{$a_existing_image_extensions[0]}' 
 				style='width: {$popup_link_width}px; height: {$popup_link_height}px;'
 			/>
+			<div class='hidden_content'>				
+				{$s_video_source_tags}			
+				{$s_flash_source_tag}
+			</div>
 		</a>
 	";
 }
@@ -55,7 +81,7 @@ if ( $start_muted )
 
 /* INSERT POSTER IF FILE IS PRESENT */
 if ( !empty( $a_existing_image_extensions ) )
-	$s_output .= "poster='" . $s_video_url . '.' . $a_existing_image_extensions[0] . "' ";
+	$s_output .= "poster='" . $this->video_dir_url . $filename . '.' . $a_existing_image_extensions[0] . "' ";
 	
 /* CLOSE STARTING VIDEO TAG */	
 $s_output .= ">";
@@ -65,7 +91,7 @@ $s_output .= ">";
 foreach ( $a_existing_video_extensions as $s_ext )
 {
 	$s_video_type = 'video/'.$s_ext;
-	$s_output .= "<source src='{$s_video_url}.{$s_ext}' type='{$s_video_type}' />";
+	$s_output .= "<source src='{$this->video_dir_url}{$filename}.{$s_ext}' type='{$s_video_type}' />";
 }
 
 /* OUTPUT FLASH TAG */
@@ -123,7 +149,7 @@ $s_output .= "
 <img 
 	id='sve_cover_image_{$filename}'
 	class='sve_cover_image'
-	src='{$s_video_url}.{$a_existing_image_extensions[0]}'
+	src='{$this->video_dir_url}{$filename}.{$a_existing_image_extensions[0]}'
 	width='{$width}'
 	height='{$height}' 
 />

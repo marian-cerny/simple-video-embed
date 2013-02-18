@@ -26,3 +26,7 @@
 .sve_popup_link {
 	display: inline-block;
 }
+
+.hidden_content {
+	display: none;
+}

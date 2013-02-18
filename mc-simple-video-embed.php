@@ -66,15 +66,15 @@ class mc_simple_video_embed
 	function mc_enqueue_scripts_and_styles() 
 	{
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'fancybox', ASSETS_URL . 'fancybox/jquery.fancybox.pack.js' );
+		wp_enqueue_script( 'sve-fancybox', ASSETS_URL . 'fancybox/jquery.fancybox.pack.js' );
 		//wp_enqueue_script( 'divbox', ASSETS_URL . 'divbox/divbox.js' );
 		
-		wp_enqueue_script( 'player_controller', ASSETS_URL . 'player-controller.js' );
-		wp_localize_script( 'player_controller', 'plugin_settings', $this->settings );
+		wp_enqueue_script( 'sve-player_controller', ASSETS_URL . 'player-controller.js' );
+		wp_localize_script( 'sve-player_controller', 'plugin_settings', $this->settings );
 		
-		wp_enqueue_style( 'fancybox', ASSETS_URL . 'fancybox/jquery.fancybox.css' );
+		wp_enqueue_style( 'sve-fancybox', ASSETS_URL . 'fancybox/jquery.fancybox.css' );
 		//wp_enqueue_style( 'divbox', ASSETS_URL . 'divbox/css/divbox.css' );
-		wp_enqueue_style( 'main', ASSETS_URL . 'styles.css' );
+		wp_enqueue_style( 'sve-main', ASSETS_URL . 'styles.css' );
 	}
 	
 	

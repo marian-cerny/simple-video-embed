@@ -8,11 +8,10 @@
 /* INSERT POPUP LINK WITH IMAGE */
 foreach ( $a_filenames as $s_filename )
 {
-	//echo $s_filename . '<br/>';
 	//VIDEO SOURCE TAGS
 	$s_video_source_tags = "";	
 	$a_existing_video_extensions = $this->get_existing_extensions( 'video', $s_filename );
-	//print_r ($a_existing_video_extensions);
+	
 	foreach( $a_existing_video_extensions as $s_ext )
 	{
 		$s_video_url = $this->video_dir_url . $s_filename . '.' . $s_ext;

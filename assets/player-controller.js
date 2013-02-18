@@ -11,7 +11,7 @@ $('.sve_popup_link').fancybox({
 }).click(function( event ){
 	event.preventDefault();
 	swap_video_content( $(this) );
-	// init();
+	init();
 });
 
 $( '.fancybox-close' ).mouseover( function(){
